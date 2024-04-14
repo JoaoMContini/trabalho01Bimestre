@@ -32,19 +32,6 @@ public class TaskController {
     }
 
     @PUT
-    @Consumes(value = MediaType.APPLICATION_JSON)
-    @Produces(value = MediaType.APPLICATION_JSON)
-    public Response atualizaTask(Task task){
-        try {
-            taskService.cadastrarTask(task);
-            taskService.cadastrarHistorico(task);
-            return Response.status(201).entity("Cadastrado com sucesso!!").build();
-        }catch (Exception ex){
-            return Response.status(403).entity(ex.getMessage()).build();
-        }
-    }
-
-    @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response atualizarTask(@PathParam("id") Integer id, Task task) {
